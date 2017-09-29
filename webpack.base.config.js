@@ -56,7 +56,7 @@ module.exports = {
             },
 
             {
-                test: /\.sass/,
+                test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: ['autoprefixer-loader', 'sass-loader'],
                     fallback: 'style-loader'
