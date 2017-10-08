@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -13,35 +14,32 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.vue$/,
-                use: [{
-                        loader: 'vue-loader',
-                        options: {
-                            loaders: {
+                loader: 'vue-loader',
+                exclude: /node_modules/,
+                options: {
+                    loaders: {
 
-                                sass: ExtractTextPlugin.extract({
-                                    use: ['css-loader?minimize', 'autoprefixer-loader', 'sass-loader'],
-                                    fallback: 'vue-style-loader'
-                                }),
+                        scss: ExtractTextPlugin.extract({
+                            use: ['css-loader?minimize', 'postcss-loader', 'sass-loader'],
+                            fallback: 'vue-style-loader'
+                        }),
 
-                                css: ExtractTextPlugin.extract({
-                                    use: ['css-loader', 'autoprefixer-loader'],
-                                    fallback: 'vue-style-loader'
-                                })
-                            }
-                        }
-                    },
-                    {
-                        loader: 'iview-loader',
-                        options: {
-                            prefix: false
-                        }
+                        sass: ExtractTextPlugin.extract({
+                            use: ['css-loader?minimize', 'postcss-loader', 'sass-loader'],
+                            fallback: 'vue-style-loader'
+                        }),
+
+                        css: ExtractTextPlugin.extract({
+                            use: ['css-loader', 'postcss-loader'],
+                            fallback: 'vue-style-loader'
+                        })
                     }
-                ]
+                }
             },
-            {
-                test: /iview\/.*?js$/,
-                loader: 'babel-loader'
-            },
+            // {
+            //     test: /iview\/.*?js$/,
+            //     loader: 'babel-loader'
+            // },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -50,26 +48,28 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader?minimize', 'autoprefixer-loader'],
+                    use: ['css-loader?minimize', 'postcss-loader'],
                     fallback: 'style-loader'
                 })
             },
 
             {
-                test: /\.scss$/,
+                test: /\.s[ac]ss$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['autoprefixer-loader', 'sass-loader'],
+                    use: ['postcss-loader', 'sass-loader'],
                     fallback: 'style-loader'
-                })
+                }),
+                exclude: /node_modules/
             },
 
             {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader?limit=1024'
+                loader: 'url-loader?limit=2048&name=static/[name].[hash:8].[ext]'
             },
             {
                 test: /\.(html|tpl)$/,
-                loader: 'html-loader'
+                loader: 'html-loader',
+                exclude: /node_modules/
             }
         ]
     },
@@ -78,5 +78,15 @@ module.exports = {
         alias: {
             'vue': 'vue/dist/vue.esm.js'
         }
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(
+            ['dist/*'], 　 //匹配删除的文件
+            {
+                root: __dirname, //根目录
+                verbose: true, //开启在控制台输出信息
+                dry: false //启用删除文件
+            }
+        )
+    ]
 };
