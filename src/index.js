@@ -30,6 +30,6 @@ new Vue({
     router,
     template: '<App/>',
     components: {
-        App: (resolve) => require(['./App'], resolve)
+        App: (resolve) => require(['./app'], resolve)
     }
 });
