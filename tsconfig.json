@@ -1,20 +1,9 @@
-// {
-//     "compilerOptions": {
-//         "outDir": "./built/",
-//         "sourceMap": true,
-//         "strict": true,
-//         "module": "es2015",
-//         "moduleResolution": "node",
-//         "target": "es5"
-//     },
-//     "include": [
-//         "./src/**/*"
-//     ]
-// }
 {
     "compilerOptions": {
-        "module": "es6",
+        "outDir": "./types/",
+        "module": "amd",
         "target": "es5",
+        "strict": true,
         "moduleResolution": "node",
         "noImplicitAny": true,
         "noImplicitThis": true,
@@ -28,34 +17,19 @@
         "suppressImplicitAnyIndexErrors": true,
         "declaration": true,
         "stripInternal": true,
-        "lib": ["es5", "es2015.promise", "dom"]
+        "lib": ["es6", "es2015.promise", "dom"],
+        "types": [
+            "node"
+        ],
+        "typeRoots": [
+            "node_modules/@types",
+            "./types-extend"
+        ]
     },
     "exclude": [
-        "node_modules", "dist"
+        "dist"
     ],
     "include": [
         "./src/**/*"
     ]
 }
-// {
-//     "compilerOptions": {
-//         "module": "commonjs",
-//         "target": "es5",
-//         "noImplicitAny": true,
-//         "sourceMap": false,
-//         "strictNullChecks": true,
-//         "typeRoots": [
-//             "./node_modules/@types"
-//         ],
-//         "lib": [
-//             "dom",
-//             "es5",
-//             "es2015"
-//         ],
-//         "noEmitHelpers": true,
-//         "experimentalDecorators": true,
-//         "importHelpers": true,
-//         "allowSyntheticDefaultImports": true,
-//         "emitDecoratorMetadata": true
-//     }
-// }

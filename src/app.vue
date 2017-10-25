@@ -1,20 +1,23 @@
 <template>
-  <div id="app">
-    <router-view />
-  </div>
+    <div>
+        <router-view></router-view>
+    </div>
 </template>
-
 <script>
-export default {
-  name: 'app'
-};
-</script>
+    export default {
+        data() {
+            return {
 
-<style scoped>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-}
-</style>
+            };
+        },
+        mounted() {
+
+        },
+        beforeDestroy() {
+
+        },
+        methods: {
+
+        }
+    };
+</script>
