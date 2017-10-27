@@ -11,7 +11,12 @@ export default class Login extends Vue {
   }
 
   msg = 'Welcome to Your Vue.js App';
-  mounted() {
 
+  handleStart() {
+    this.$Modal.info({
+      title: 'Bravo',
+      content: 'Now, enjoy the convenience of iView.'
+    });
   }
+  mounted() { }
 }
