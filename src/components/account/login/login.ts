@@ -10,13 +10,5 @@ export default class Login extends Vue {
     super();
   }
 
-  msg = 'Welcome to Your Vue.js App';
-
-  handleStart() {
-    this.$Modal.info({
-      title: 'Bravo',
-      content: 'Now, enjoy the convenience of iView.'
-    });
-  }
-  mounted() { }
+  msg = '这里是登录框';
 }
