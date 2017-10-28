@@ -13,8 +13,5 @@ Vue.config.productionTip = false;
 
 export default new Vue({
   el: '#app',
-  router,
-  data: {
-    name: 'GRRTGHFRGFFDFDFrouter'
-  }
+  router
 });
