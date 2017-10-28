@@ -9,14 +9,4 @@ export default class Login extends Vue {
   constructor() {
     super();
   }
-
-  msg = 'Welcome to Your Vue.js App';
-
-  handleStart() {
-    this.$Modal.info({
-      title: 'Bravo',
-      content: 'Now, enjoy the convenience of iView.'
-    });
-  }
-  mounted() { }
 }
