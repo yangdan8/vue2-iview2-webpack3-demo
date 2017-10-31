@@ -1,34 +1,74 @@
+// tsconfig.json指定了用来编译这个项目的根文件和编译选项
 {
+    // compilerOptions:编译选项,可以被忽略，这时编译器会使用默认值
     "compilerOptions": {
-        "outDir": "./types/",
-        "module": "amd",
-        "target": "es5",
-        "strict": true,
-        "moduleResolution": "node",
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "noImplicitReturns": true,
-        "noUnusedLocals": true,
-        "strictNullChecks": true,
-        "sourceMap": false,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
+        // 允许从没有设置默认导出的模块中默认导入。这并不影响代码的显示，仅为了类型检查。
         "allowSyntheticDefaultImports": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "declaration": true,
-        "stripInternal": true,
-        "lib": ["es6", "es2015.promise", "dom"],
+        // 解析非相对模块名的基准目录
+        "baseUrl": "./src",
+        // 给源码里的装饰器声明加上设计类型元数据
+        "emitDecoratorMetadata": true,
+        // 启用实验性的ES装饰器
+        "experimentalDecorators": true,
+        // 指定生成哪个模块系统代码
+        "module": "amd",
+        // 决定如何处理模块。或者是"Node"对于Node.js/io.js，或者是"Classic"（默认）
+        "moduleResolution": "node",
+        // 不再输出文件中生成用户自定义的帮助函数代码，如__extends。
+        "noEmitHelpers": true,
+        // 在表达式和声明上有隐含的any类型时报错
+        "noImplicitAny": true, // false
+        // 用于debug ,生成相应的.map文件
+        "sourceMap": false, // true,
+        // 在严格的null检查模式下，null和undefined值不包含在任何类型里，只允许用它们自己和any来赋值（有个例外，undefined可以赋值到void）。
+        "strictNullChecks": true, // false,
+        // 目标代码类型
+        "target": "es5",
+        // 模块名到基于baseUrl的路径映射的列表
+        "paths": {},
+        // 编译过程中需要引入的库文件的列表
+        "lib": ["es6", "es2015.promise", "dom", "es2017"],
+        // 要包含的类型声明文件名列表；如果指定了types，只有被列出来的包才会被包含进来
         "types": [
-            "node"
+            "hammerjs",
+            "node",
+            "source-map",
+            "uglify-js",
+            "webpack"
         ],
         "typeRoots": [
             "node_modules/@types"
-        ]
+        ],
+        "stripInternal": true,
+        "declaration": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "strict": true,
+        "outDir": "types/"
     },
+    // 如果"files"和"include"都没有被指定，
+    // 编译器默认包含当前目录和子目录下所有的TypeScript文件（.ts, .d.ts 和 .tsx），
+    // 排除在"exclude"里指定的文件。
+    // "exclude": [
+    //     "node_modules",
+    //     "dist"
+    // ],
     "exclude": [
         "dist"
     ],
     "include": [
         "./src/**/*"
-    ]
+    ],
+    // Typescript加载选项
+    "awesomeTypescriptLoaderOptions": {
+        "forkChecker": true,
+        "useWebpackText": true
+    },
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "atom": {
+        "rewriteTsconfig": false
+    }
 }
