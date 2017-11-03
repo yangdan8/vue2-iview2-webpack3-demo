@@ -1,5 +1,3 @@
-// /// <reference path="../../../../pi-types/iview.d.ts" />
-
 import Vue from "vue";
 import Component from "vue-class-component";
 import IView from "@/../pi-types/iview";
@@ -41,14 +39,13 @@ export default class Login extends Vue {
     ]
   };
 
-  handleSubmit(name: string) {
-    (this.$refs[name] as IView.IForm).validate((valid) => {
-      if (valid) {
-        this.$Message.success('提交成功!');
-      } else {
-        this.$Message.error('表单验证失败!');
-      }
-    })
+  handleSubmit(name: string): void {
+      (this.$refs[name] as IView.IForm).validate(valid => {
+        if (valid) {
+          this.$Message.success('提交成功!');
+        } else {
+          this.$Message.error('表单验证失败!');
+        }
+      });
   };
 }
-
