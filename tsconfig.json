@@ -4,13 +4,14 @@
     "compilerOptions": {
         // 解析非相对模块名的基准目录
         "baseUrl": "./src",
-        //输出d.ts文件的目录
-        "outDir": "./types/",
+        // //输出d.ts文件的目录
+        // "outDir": "./types/",
         // 指定生成哪个模块系统代码
         "module": "amd",
         // 目标代码类型
         "target": "es5",
-
+        // 启用所有严格类型检查选项。 
+        // 启用--strict相当于启用--noImplicitAny, --noImplicitThis, --alwaysStrict和--strictNullChecks。
         "strict": true,
         // 决定如何处理模块。或者是"Node"对于Node.js/io.js，或者是"Classic"（默认）
         "moduleResolution": "node",
@@ -20,11 +21,11 @@
         "noImplicitThis": true,
         // 在表达式和声明上有隐含的return类型时报错
         "noImplicitReturns": true,
-
+        //若有未使用的局部变量则抛错。
         "noUnusedLocals": true,
         // 在严格的null检查模式下，null和undefined值不包含在任何类型里，只允许用它们自己和any来赋值（有个例外，undefined可以赋值到void）。
         "strictNullChecks": true,
-        // 用于debug ,生成相应的.map文件
+        // 用于debug,生成相应的.map文件
         "sourceMap": false,
         // 启用实验性的ES装饰器
         "experimentalDecorators": true,
@@ -32,11 +33,11 @@
         "emitDecoratorMetadata": true,
         // 允许从没有设置默认导出的模块中默认导入。这并不影响代码的显示，仅为了类型检查。
         "allowSyntheticDefaultImports": true,
-
+        // 阻止--noImplicitAny对缺少索引签名的索引对象报错。
         "suppressImplicitAnyIndexErrors": true,
-
-        "declaration": true,
-
+        // 生成相应的.d.ts文件。
+        "declaration": false,
+        // 不对具有/** @internal */ JSDoc注解的代码生成代码。
         "stripInternal": true,
         // 编译过程中需要引入的库文件的列表
         "lib": ["es6", "es2015.promise", "dom"],
@@ -48,7 +49,7 @@
             // "uglify-js",
             // "webpack"
         ],
-
+        // 要包含的类型声明文件路径列表。查看@types，--typeRoots和--types章节了解详细信息
         "typeRoots": [
                 "node_modules/@types"
             ] // ,
@@ -63,11 +64,11 @@
     "exclude": [
         "node_modules",
         "dist",
-        "./src/pi-types/*"
+        "src/**/*.d.ts"
     ],
     // 待转换的文件
     "include": [
-            "./src/**/*.ts"
+            "src/**/*.ts"
         ] // ,
         //     // Typescript加载选项
         //     "awesomeTypescriptLoaderOptions": {
