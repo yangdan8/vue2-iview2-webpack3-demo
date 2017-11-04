@@ -7,8 +7,8 @@ require("./login.scss");
   template: require("./login.html")
 })
 export default class Login extends Vue {
-  constructor() {
-    super();
+  constructor(...args: any[]) {
+    super(...args);
   }
 
   formData = {
@@ -40,7 +40,7 @@ export default class Login extends Vue {
   };
 
   handleSubmit(name: string): void {
-    (this.$refs[name] as IView.IForm).validate(valid => {
+    (<IView.IForm>this.$refs[name]).validate(valid => {
       if (valid) {
         this.$Message.success('提交成功!');
       } else {
