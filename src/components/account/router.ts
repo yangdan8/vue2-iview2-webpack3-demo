@@ -1,6 +1,6 @@
 
 import { RouteConfig } from 'vue-router';
-import Login from  './login/login';
+import Login from './login/login';
 
 const route = {
   path: '/',

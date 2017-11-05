@@ -1,6 +1,6 @@
 <div class="pi-account-login">
     <div class="pi-login">
-        <Form ref="form" :model="formData" :rules="ruleData" :label-width="80">
+        <!-- <Form ref="form" :model="formData" :rules="ruleData" :label-width="80">
             <FormItem label="用户名" prop="userName">
                 <Input type="text" v-model="formData.userName" number></Input>
             </FormItem>
@@ -14,6 +14,7 @@
                 <Button type="primary" @click="handleSubmit('form')">提交</Button>
                 <Button type="ghost" @click="handleReset('form')" style="margin-left: 8px">重置</Button>
             </FormItem>
-        </Form>
+        </Form> -->
+        <Button type="primary" @click="handleSubmit('form')">提交</Button>
     </div>
 </div>

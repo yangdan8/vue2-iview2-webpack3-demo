@@ -7,10 +7,13 @@ require("./login.scss");
   template: require("./login.html")
 })
 export default class Login extends Vue {
-  constructor(...args: any[]) {
-    super(...args);
+  constructor() {
+    super();
   }
+  //#region props
+  //#endregin
 
+  //#region data
   formData = {
     userName: '',
     passWord: '',
@@ -38,7 +41,9 @@ export default class Login extends Vue {
       }
     ]
   };
+  //#endregin
 
+  //#region methods
   handleSubmit(name: string): void {
     (<IView.IForm>this.$refs[name]).validate(valid => {
       if (valid) {
@@ -48,4 +53,11 @@ export default class Login extends Vue {
       }
     });
   };
+  handleReset(): void {
+        this.$Message.success('恢复!');
+  };
+  //#endregin
+
+  //#region hooks
+  //#endregin
 }
